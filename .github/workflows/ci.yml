@@ -24,4 +24,4 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Build with Maven
-        run: ./mvnw --batch-mode --update-snapshots verify
+        run: ./mvnw org.apache.maven.plugins:maven-dependency-plugin:3.2.0:get -Dartifact=org.cloudfoundry:cloudfoundry-client:5.5.0.RELEASE && ./mvnw --batch-mode --update-snapshots verify

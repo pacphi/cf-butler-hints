@@ -15,6 +15,6 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Publish package
-        run: ./mvnw versions:set -DnewVersion=${{ github.event.release.tag_name }} && ./mvnw --batch-mode --update-snapshots deploy
+        run: ./mvnw org.apache.maven.plugins:maven-dependency-plugin:3.2.0:get -Dartifact=org.cloudfoundry:cloudfoundry-client:5.5.0.RELEASE && ./mvnw versions:set -DnewVersion=${{ github.event.release.tag_name }} && ./mvnw --batch-mode --update-snapshots deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
