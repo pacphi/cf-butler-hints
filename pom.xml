@@ -8,7 +8,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>cf-butler-hints</name>
-    <description>Srping Native library for cf-butler</description>
+    <description>Spring Native library for cf-butler</description>
 
     <scm>
         <connection>scm:git:git://github.com/pacphi/cf-butler-hints.git</connection>
@@ -58,7 +58,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <spring-native.version>0.10.1</spring-native.version>
+        <spring-native.version>0.10.2-SNAPSHOT</spring-native.version>
     </properties>
 
     <dependencies>
@@ -76,6 +76,12 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.10.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup.wire</groupId>
+            <artifactId>wire-runtime</artifactId>
+            <version>3.7.0</version>
         </dependency>
 
         <dependency>

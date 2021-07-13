@@ -11,9 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.nativex.type.TypeSystem;
 
-public class NativeHintsTest {
+public class CloudFoundryClientHintsTest {
     
-    private static Logger log = LoggerFactory.getLogger(NativeHintsTest.class);
+    private static Logger log = LoggerFactory.getLogger(CloudFoundryClientHintsTest.class);
 
     private static final String M2_HOME = System.getProperty("user.home") + "/.m2/repository";
     private static final String CF_PATH = "/org/cloudfoundry";
@@ -35,7 +35,7 @@ public class NativeHintsTest {
 
     @Test
     public void sanityCheck() {
-        NativeHints hints = new NativeHints();
+        CloudFoundryClientHints hints = new CloudFoundryClientHints();
         TypeSystem typeSystem = new TypeSystem(CLASSPATH);
         log.debug("Hints: {}", hints.computeHints(typeSystem));
     }

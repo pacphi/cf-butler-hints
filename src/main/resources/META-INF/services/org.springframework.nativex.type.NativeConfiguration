@@ -1,1 +1,2 @@
-io.pivotal.cfapp.hints.NativeHints
+io.pivotal.cfapp.hints.ButlerHints
+io.pivotal.cfapp.hints.CloudFoundryClientHints
