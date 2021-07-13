@@ -24,7 +24,7 @@ public class CloudFoundryClientHints implements NativeConfiguration {
 					.use(typeSystem)
 						.toProcessTypes(
 							typeSystem
-								.scanDependency("cloudfoundry-client*")
+								.scanDependencies("cloudfoundry-client*")
 								.forTypes(type -> {
 									return 
 										typeSystem.resolveDotted("org.cloudfoundry.client.v2.PaginatedResponse").isAssignableFrom(type) ||
