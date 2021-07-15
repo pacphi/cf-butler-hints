@@ -32,6 +32,8 @@
         </rollingPolicy>
     </appender>
     
+    <logger name="io.pivotal.cfapp.hints" level="debug" /> 
+
     <!-- LOG everything at INFO level -->
     <root level="info">
         <appender-ref ref="RollingFile" />
