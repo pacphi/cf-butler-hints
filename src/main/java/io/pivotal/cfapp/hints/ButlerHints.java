@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.nativex.hint.AotProxyHint;
 import org.springframework.nativex.hint.NativeHint;
+import org.springframework.nativex.hint.TypeHint;
 import org.springframework.nativex.type.HintDeclaration;
 import org.springframework.nativex.type.NativeConfiguration;
 import org.springframework.nativex.type.TypeSystem;
@@ -50,7 +51,7 @@ import org.springframework.nativex.type.TypeSystem;
 	}
 )
 public class ButlerHints implements NativeConfiguration {
-	
+
 	@Override
 	public List<HintDeclaration> computeHints(TypeSystem typeSystem) {
 		return Collections.emptyList();

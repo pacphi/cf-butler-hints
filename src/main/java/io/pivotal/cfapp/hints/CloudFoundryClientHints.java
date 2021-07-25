@@ -14,10 +14,10 @@ import org.springframework.nativex.type.TypeSystem;
 
 
 public class CloudFoundryClientHints implements NativeConfiguration {
-	
+
 	@Override
 	public List<HintDeclaration> computeHints(TypeSystem typeSystem) {
-		Set<String> responseTypes = 
+		Set<String> responseTypes =
 			Set.of(
 				"org.cloudfoundry.client.v2.PaginatedResponse",
 				"org.cloudfoundry.client.v3.PaginatedResponse",
