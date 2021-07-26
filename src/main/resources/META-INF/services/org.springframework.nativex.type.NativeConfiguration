@@ -1,3 +1,2 @@
 io.pivotal.cfapp.hints.ButlerHints
 io.pivotal.cfapp.hints.CloudFoundryClientHints
-io.pivotal.cfapp.hints.SpringDataConverterHints
