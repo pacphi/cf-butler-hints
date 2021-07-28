@@ -1,25 +1,14 @@
 package io.pivotal.cfapp.hints;
 
-import static org.springframework.nativex.hint.AccessBits.ALL;
 import static org.springframework.nativex.hint.ProxyBits.IS_STATIC;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.nativex.hint.AotProxyHint;
 import org.springframework.nativex.hint.NativeHint;
-import org.springframework.nativex.type.AccessDescriptor;
 import org.springframework.nativex.type.HintDeclaration;
 import org.springframework.nativex.type.NativeConfiguration;
-import org.springframework.nativex.type.Type;
-import org.springframework.nativex.type.TypeProcessor;
 import org.springframework.nativex.type.TypeSystem;
 
 
@@ -60,39 +49,10 @@ import org.springframework.nativex.type.TypeSystem;
 		@AotProxyHint(targetClassName = "io.pivotal.cfapp.service.TimeKeeperService", proxyFeatures = IS_STATIC)
 	}
 )
-public class NativeHints implements NativeConfiguration {
+public class ButlerHints implements NativeConfiguration {
 
-	private static Logger log = LoggerFactory.getLogger(NativeHints.class);
-	
 	@Override
 	public List<HintDeclaration> computeHints(TypeSystem typeSystem) {
-		List<Type> candidates = typeSystem.scan(type -> {
-			return type.isPartOfDomain("org.cloudfoundry.client") && 
-				(
-					typeSystem.resolveDotted("org.cloudfoundry.client.v2.PaginatedResponse").isAssignableFrom(type) ||
-					typeSystem.resolveDotted("org.cloudfoundry.client.v3.PaginatedResponse").isAssignableFrom(type) ||
-					typeSystem.resolveDotted("org.cloudfoundry.client.v2.Resource").isAssignableFrom(type) ||
-					typeSystem.resolveDotted("org.cloudfoundry.client.v3.Resource").isAssignableFrom(type)
-				);	
-		});
-		dumpHints(candidates);
-		return TypeProcessor
-				.namedProcessor("cloudfoundry.client - processor")
-				.skipAnnotationInspection()
-				.skipConstructorInspection()
-				.onTypeDiscovered((type, context) -> context.addReflectiveAccess(type, new AccessDescriptor(ALL)))
-					.use(typeSystem)
-						.toProcessTypes(candidates);
-	}
-
-	private void dumpHints(List<Type> candidates) {
-		String filename = "/tmp/cf-butler-hints." + LocalDateTime.now().toString() + ".out";
-		String content = candidates.stream().map(t -> t.getDottedName()).collect(Collectors.joining("\n"));
-		try {
-			File file = new File(filename);
-			FileUtils.writeStringToFile(file, content, Charset.defaultCharset());
-		} catch (IOException ioe) {
-			log.warn("Couldn't dump {} to /tmp!", filename);
-		}
+		return Collections.emptyList();
 	}
 }
